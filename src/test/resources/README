@@ -1,0 +1,28 @@
+Checklist for monkkee.com:
+
+--Registration (button "Sing up - it's free")--
+1. Successful registration (email is valid, password has enough characters)
+2. Submit registration with all empty fields
+3. Submit registration with empty password
+
+--Login--
+4. Successful login
+5. Login with all empty fields
+6. Login with empty password
+7. Login with empty email
+8. Send password reminder test
+
+--Entry creation--
+9. Create entry
+10.Delete entry
+11. Delete all entries
+
+--Search--
+12. Existing entry is found
+13. Empty query submit displays all entries
+14. Non-existing query submit displays no entries
+
+--Calendar--
+15. After choosing a date, all entries created on that date are displayed
+
+
