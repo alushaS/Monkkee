@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeMethod;
-import pages.AccountPage;
-import pages.RegistrationPage;
+import pages.*;
+import steps.LoginSteps;
 import steps.RegistrationSteps;
 import utils.PropertyReader;
 
@@ -23,15 +23,25 @@ public class BaseTest {
     public static final String HINT = PropertyReader.getProperty("hint");
     public static final String LOGIN_URL = PropertyReader.getProperty("loginUrl");
     public static final String REGISTRATION_URL = PropertyReader.getProperty("registrationUrl");
+    public static final String PASSWORD_REMINDER_URL = PropertyReader.getProperty("passwordReminderUrl");
+
 
     protected RegistrationPage registrationPage;
     protected RegistrationSteps registrationSteps;
     protected AccountPage accountPage;
+    protected LoginPage loginPage;
+    protected EntriesPage entriesPage;
+    protected LoginSteps loginSteps;
+    protected PasswordReminderPage passwordReminderPage;
 
     public void initPages() {
         registrationPage =new RegistrationPage();
         registrationSteps = new RegistrationSteps();
         accountPage = new AccountPage();
+        loginPage = new LoginPage();
+        entriesPage = new EntriesPage();
+        loginSteps = new LoginSteps();
+        passwordReminderPage = new PasswordReminderPage();
     }
 
     @BeforeMethod

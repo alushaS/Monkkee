@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationPage extends BasePage {
 
-    public static final SelenideElement REGISTRATION_SUBMIT = $x("//button[@class='btn btn-primary']");
+    public static final SelenideElement SUBMIT = $x("//button[@class='btn btn-primary']");
     public static final SelenideElement TERMS_OF_USE_CHECKBOX = $x("//*[@id='registration_terms_of_use']");
     public static final SelenideElement WARNING_CHECKBOX = $x("//*[@id='registration_lost_password_warning_registered']");
 
@@ -25,7 +25,7 @@ public class RegistrationPage extends BasePage {
     }
 
     public RegistrationPage isOpened() {
-        REGISTRATION_SUBMIT.shouldBe(Condition.visible);
+        SUBMIT.shouldBe(Condition.visible);
         return this;
     }
 
@@ -51,7 +51,7 @@ public class RegistrationPage extends BasePage {
         fillRegistrationForm(email, password, passwordConfirmation, hint);
         TERMS_OF_USE_CHECKBOX.setSelected(true);
         WARNING_CHECKBOX.setSelected(true);
-        new Button().click(REGISTRATION_SUBMIT);
+        new Button().click(SUBMIT);
         return new AccountPage();
     }
 
@@ -66,12 +66,12 @@ public class RegistrationPage extends BasePage {
         fillRegistrationForm(user);
         TERMS_OF_USE_CHECKBOX.setSelected(true);
         WARNING_CHECKBOX.setSelected(true);
-        new Button().click(REGISTRATION_SUBMIT);
+        new Button().click(SUBMIT);
         return new AccountPage();
     }
 
     public boolean isButtonOkDisabled() {
-        return REGISTRATION_SUBMIT.is(Condition.clickable);
+        return SUBMIT.is(Condition.clickable);
     }
 
 }

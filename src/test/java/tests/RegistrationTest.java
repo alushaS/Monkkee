@@ -1,6 +1,5 @@
 package tests;
 
-import org.checkerframework.checker.units.qual.A;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

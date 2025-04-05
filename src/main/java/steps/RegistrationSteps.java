@@ -35,5 +35,4 @@ public class RegistrationSteps extends BaseSteps{
                 .isOpened()
                 .registerUserWOPasswordConfirmation(user);
     }
-
 }
