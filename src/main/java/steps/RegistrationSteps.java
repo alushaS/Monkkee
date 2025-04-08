@@ -13,14 +13,6 @@ public class RegistrationSteps extends BaseSteps{
     }
 
     @Step("Register user: {email}")
-    public void registerUserStep(String url, String email, String password, String passwordConfirmation, String hint) {
-        registrationPage
-                .openRegistrationPage(url)
-                .isOpened()
-                .registerUser(email, password, passwordConfirmation, hint);
-    }
-
-    @Step("Register user with all empty fields")
     public void registerUserStep(String url, User user) {
         registrationPage
                 .openRegistrationPage(url)

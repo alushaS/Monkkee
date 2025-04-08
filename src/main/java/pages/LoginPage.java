@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 import static pages.RegistrationPage.SUBMIT;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
     public static final SelenideElement LOGIN_MANDATORY = $x("//*[@class='form-group has-error'][1]/descendant::div[@class='help-block ng-binding']");
     public static final SelenideElement PASSWORD_MANDATORY = $x("//*[@class='col-sm-9']/descendant::div[2]");

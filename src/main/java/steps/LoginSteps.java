@@ -20,14 +20,17 @@ public class LoginSteps extends BaseSteps{
                 .loginUser(email, password);
     }
 
+    @Step("Login user: {email} after logout")
+    public void loginUserAfterLogout(String email, String password) {
+        loginPage
+                .loginUser(email, password);
+    }
+
     @Step("Login user: {email}")
     public void loginUser(String url, User user) {
         loginPage
                 .openLoginPage(url)
                 .isOpened()
-                .loginUser(user);
+                .loginUser(user.getEmail(), user.getPassword());
     }
-
-
-
 }

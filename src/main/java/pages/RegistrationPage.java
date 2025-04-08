@@ -3,8 +3,10 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import elements.Button;
+import elements.Checkbox;
 import elements.Input;
 import entity.User;
+import org.checkerframework.checker.units.qual.C;
 
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
@@ -12,9 +14,6 @@ import static com.codeborne.selenide.Selenide.open;
 public class RegistrationPage extends BasePage {
 
     public static final SelenideElement SUBMIT = $x("//button[@class='btn btn-primary']");
-    public static final SelenideElement TERMS_OF_USE_CHECKBOX = $x("//*[@id='registration_terms_of_use']");
-    public static final SelenideElement WARNING_CHECKBOX = $x("//*[@id='registration_lost_password_warning_registered']");
-
 
     public RegistrationPage() {
     }
@@ -29,48 +28,31 @@ public class RegistrationPage extends BasePage {
         return this;
     }
 
-    private RegistrationPage fillRegistrationForm(String email, String password, String passwordConfirmation, String hint) {
-        isOpened();
-        new Input("registration_email").write(email);
-        new Input("registration_password").write(password);
-        new Input("registration_password_confirmation").write(passwordConfirmation);
-        new Input("registration_password_hint").write(hint);
-        return this;
-    }
-
     private RegistrationPage fillRegistrationForm(User user) {
         isOpened();
-        new Input("registration_email").write(user.getEmail());
-        new Input("registration_password").write(user.getPassword());
-        new Input("registration_password_confirmation").write(user.getPasswordConfirmation());
-        new Input("registration_password_hint").write(user.getHint());
+        new Input("email").writeToRegistration(user.getEmail());
+        new Input("password").writeToRegistration(user.getPassword());
+        new Input("password_confirmation").writeToRegistration(user.getPasswordConfirmation());
+        new Input("password_hint").writeToRegistration(user.getHint());
         return this;
     }
 
-    public AccountPage registerUser(String email, String password, String passwordConfirmation, String hint) {
-        fillRegistrationForm(email, password, passwordConfirmation, hint);
-        TERMS_OF_USE_CHECKBOX.setSelected(true);
-        WARNING_CHECKBOX.setSelected(true);
-        new Button().click(SUBMIT);
-        return new AccountPage();
-    }
 
     public AccountPage registerUser(User user) {
         fillRegistrationForm(user);
-        TERMS_OF_USE_CHECKBOX.setSelected(true);
-        WARNING_CHECKBOX.setSelected(true);
+        new Checkbox().selectCheckBoxes();
+        new Button().click(SUBMIT);
         return new AccountPage();
     }
 
     public AccountPage registerUserWOPasswordConfirmation(User user) {
         fillRegistrationForm(user);
-        TERMS_OF_USE_CHECKBOX.setSelected(true);
-        WARNING_CHECKBOX.setSelected(true);
+        new Checkbox().selectCheckBoxes();
         new Button().click(SUBMIT);
         return new AccountPage();
     }
 
-    public boolean isButtonOkDisabled() {
+    public boolean isButtonOkEnabled() {
         return SUBMIT.is(Condition.clickable);
     }
 

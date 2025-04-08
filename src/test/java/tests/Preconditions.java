@@ -1,8 +1,16 @@
 package tests;
 
 import entity.User;
+import utils.PropertyReader;
 
 public class Preconditions extends BaseTest{
+
+    protected final User userWithAllFields = User.builder()
+            .email(PropertyReader.getProperty("user"))
+            .password(PropertyReader.getProperty("password"))
+            .passwordConfirmation(PropertyReader.getProperty("passwordConfirmation"))
+            .hint(PropertyReader.getProperty("hint"))
+            .build();
 
     protected final User userWithAllEmptyFields = User.builder()
             .email("")

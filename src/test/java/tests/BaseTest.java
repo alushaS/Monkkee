@@ -1,12 +1,15 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import entity.Entry;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeMethod;
 import pages.*;
+import steps.EntrySteps;
 import steps.LoginSteps;
+import steps.PasswordReminderSteps;
 import steps.RegistrationSteps;
 import utils.PropertyReader;
 
@@ -24,6 +27,7 @@ public class BaseTest {
     public static final String LOGIN_URL = PropertyReader.getProperty("loginUrl");
     public static final String REGISTRATION_URL = PropertyReader.getProperty("registrationUrl");
     public static final String PASSWORD_REMINDER_URL = PropertyReader.getProperty("passwordReminderUrl");
+    public static final String ENTRY_TEXT = PropertyReader.getProperty("entryText");
 
 
     protected RegistrationPage registrationPage;
@@ -33,6 +37,11 @@ public class BaseTest {
     protected EntriesPage entriesPage;
     protected LoginSteps loginSteps;
     protected PasswordReminderPage passwordReminderPage;
+    protected PasswordReminderSteps passwordReminderSteps;
+    protected EntryPage entryPage;
+    protected EntrySteps entrySteps;
+    protected EntryTest entryTest;
+    protected Entry entry;
 
     public void initPages() {
         registrationPage =new RegistrationPage();
@@ -42,6 +51,11 @@ public class BaseTest {
         entriesPage = new EntriesPage();
         loginSteps = new LoginSteps();
         passwordReminderPage = new PasswordReminderPage();
+        entryPage = new EntryPage();
+        entrySteps = new EntrySteps();
+        entryTest = new EntryTest();
+        entry = new Entry();
+        passwordReminderSteps = new PasswordReminderSteps();
     }
 
     @BeforeMethod
