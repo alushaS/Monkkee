@@ -3,6 +3,7 @@ package steps;
 import entity.User;
 import io.qameta.allure.Step;
 import pages.LoginPage;
+import pages.SettingsPage;
 
 public class LoginSteps extends BaseSteps{
 
@@ -32,5 +33,10 @@ public class LoginSteps extends BaseSteps{
                 .openLoginPage(url)
                 .isOpened()
                 .loginUser(user.getEmail(), user.getPassword());
+    }
+
+    public void logoutUser() {
+        loginPage
+                .logout();
     }
 }

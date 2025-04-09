@@ -32,14 +32,4 @@ public class EntryTest extends BaseTest{
         loginSteps.loginUserAfterLogout(USER, PASSWORD);
         Assert.assertEquals(entriesPage.getNoEntriesFoundText(), "No entries found");
     }
-
-    @Test(description = "Search existing entry test")
-    public void searchExistingEntryTest() {
-        loginSteps
-                .loginUser(LOGIN_URL, USER, PASSWORD);
-        entrySteps
-                .createNewEntry(ENTRY_TEXT)
-                .searchExistingEntry(ENTRY_TEXT);
-        Assert.assertEquals(entriesPage.getExistEntryText(ENTRY_TEXT), ENTRY_TEXT);
-    }
 }

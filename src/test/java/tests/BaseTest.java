@@ -7,10 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeMethod;
 import pages.*;
-import steps.EntrySteps;
-import steps.LoginSteps;
-import steps.PasswordReminderSteps;
-import steps.RegistrationSteps;
+import steps.*;
 import utils.PropertyReader;
 
 import java.util.HashMap;
@@ -28,6 +25,8 @@ public class BaseTest {
     public static final String REGISTRATION_URL = PropertyReader.getProperty("registrationUrl");
     public static final String PASSWORD_REMINDER_URL = PropertyReader.getProperty("passwordReminderUrl");
     public static final String ENTRY_TEXT = PropertyReader.getProperty("entryText");
+    public static final String NON_EXISTING_ENTRY_TEXT = PropertyReader.getProperty("nonExistingEntryText");
+    public static final String LANGUAGE_SETTINGS = PropertyReader.getProperty("languageUrl");
 
 
     protected RegistrationPage registrationPage;
@@ -42,6 +41,8 @@ public class BaseTest {
     protected EntrySteps entrySteps;
     protected EntryTest entryTest;
     protected Entry entry;
+    protected SettingsPage settingsPage;
+    protected SettingsSteps settingsSteps;
 
     public void initPages() {
         registrationPage =new RegistrationPage();
@@ -56,6 +57,8 @@ public class BaseTest {
         entryTest = new EntryTest();
         entry = new Entry();
         passwordReminderSteps = new PasswordReminderSteps();
+        settingsPage = new SettingsPage();
+        settingsSteps = new SettingsSteps();
     }
 
     @BeforeMethod

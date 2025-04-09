@@ -1,14 +1,12 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import elements.Button;
 import elements.Input;
 
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static pages.RegistrationPage.SUBMIT;
 
 public class EntriesPage extends BasePage{
 
@@ -20,7 +18,7 @@ public class EntriesPage extends BasePage{
     public static String ENTRY_CHECKBOX = "//*[contains(text(), '%s')]/preceding::input[@type='checkbox'][1]";
     public static final SelenideElement DELETE_ALL_CHECKBOX = $x("//*[@title='Select all']");
     public static final SelenideElement NO_ENTRIES_FOUND = $x("//*[contains(text(), 'No entries found')]");
-    public static final SelenideElement SUBMIT_SEARCH = $x("//*[@type='submit']");
+    public static final SelenideElement SUBMIT = $x("//*[@type='submit']");
 
 
     public boolean isUserLoggedIn() {
@@ -48,6 +46,7 @@ public class EntriesPage extends BasePage{
     }
 
     public String getNoEntriesFoundText() {
+        NO_ENTRIES_FOUND.shouldBe(Condition.visible);
         return NO_ENTRIES_FOUND.getText();
     }
 
@@ -68,7 +67,7 @@ public class EntriesPage extends BasePage{
 
     public EntriesPage searchEntry(String entryText) {
         new Input("appendedInputButton").write(entryText);
-        new Button().click(SUBMIT_SEARCH);
+        new Button().click(SUBMIT);
         return this;
     }
 

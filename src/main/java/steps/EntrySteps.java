@@ -3,7 +3,6 @@ package steps;
 import io.qameta.allure.Step;
 import pages.EntriesPage;
 import pages.EntryPage;
-import pages.LoginPage;
 
 public class EntrySteps extends BaseSteps{
 
@@ -40,7 +39,7 @@ public class EntrySteps extends BaseSteps{
     }
 
     @Step("Search existing entry step")
-    public EntrySteps searchExistingEntry(String entryText) {
+    public EntrySteps searchEntry(String entryText) {
         entriesPage
                 .searchEntry(entryText);
         return this;

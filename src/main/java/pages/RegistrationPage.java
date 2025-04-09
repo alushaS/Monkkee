@@ -6,14 +6,13 @@ import elements.Button;
 import elements.Checkbox;
 import elements.Input;
 import entity.User;
-import org.checkerframework.checker.units.qual.C;
 
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationPage extends BasePage {
 
-    public static final SelenideElement SUBMIT = $x("//button[@class='btn btn-primary']");
+    public static final SelenideElement SUBMIT_REG = $x("//button[@class='btn btn-primary']");
 
     public RegistrationPage() {
     }
@@ -24,7 +23,7 @@ public class RegistrationPage extends BasePage {
     }
 
     public RegistrationPage isOpened() {
-        SUBMIT.shouldBe(Condition.visible);
+        SUBMIT_REG.shouldBe(Condition.visible);
         return this;
     }
 
@@ -41,19 +40,19 @@ public class RegistrationPage extends BasePage {
     public AccountPage registerUser(User user) {
         fillRegistrationForm(user);
         new Checkbox().selectCheckBoxes();
-        new Button().click(SUBMIT);
+        new Button().click(SUBMIT_REG);
         return new AccountPage();
     }
 
     public AccountPage registerUserWOPasswordConfirmation(User user) {
         fillRegistrationForm(user);
         new Checkbox().selectCheckBoxes();
-        new Button().click(SUBMIT);
+        new Button().click(SUBMIT_REG);
         return new AccountPage();
     }
 
     public boolean isButtonOkEnabled() {
-        return SUBMIT.is(Condition.clickable);
+        return SUBMIT_REG.is(Condition.clickable);
     }
 
 }
