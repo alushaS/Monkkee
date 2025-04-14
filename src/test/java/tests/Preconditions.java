@@ -3,7 +3,7 @@ package tests;
 import entity.User;
 import utils.PropertyReader;
 
-public class Preconditions extends BaseTest{
+public class Preconditions extends BaseTest implements ITestConstants {
 
     protected final User userWithAllFields = User.builder()
             .email(PropertyReader.getProperty("user"))

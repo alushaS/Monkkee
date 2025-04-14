@@ -2,10 +2,13 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import entity.Entry;
+import listeners.TestListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import pages.*;
 import steps.*;
 import utils.PropertyReader;
@@ -13,21 +16,18 @@ import utils.PropertyReader;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
-public class BaseTest {
+@Listeners(TestListener.class)
+public class BaseTest implements ITestConstants {
 
     public static final String USER = PropertyReader.getProperty("user");
     public static final String PASSWORD = PropertyReader.getProperty("password");
-    public static final String PASSWORD_CONFIRMATION = PropertyReader.getProperty("passwordConfirmation");
-    public static final String HINT = PropertyReader.getProperty("hint");
     public static final String LOGIN_URL = PropertyReader.getProperty("loginUrl");
     public static final String REGISTRATION_URL = PropertyReader.getProperty("registrationUrl");
     public static final String PASSWORD_REMINDER_URL = PropertyReader.getProperty("passwordReminderUrl");
-    public static final String ENTRY_TEXT = PropertyReader.getProperty("entryText");
-    public static final String NON_EXISTING_ENTRY_TEXT = PropertyReader.getProperty("nonExistingEntryText");
     public static final String LANGUAGE_SETTINGS = PropertyReader.getProperty("languageUrl");
-
 
     protected RegistrationPage registrationPage;
     protected RegistrationSteps registrationSteps;
@@ -70,17 +70,17 @@ public class BaseTest {
         options.setExperimentalOption("prefs", prefs);
         WebDriver driver = new ChromeDriver(options);
         setWebDriver(driver);
+        getWebDriver().manage().window().maximize();
 
         Configuration.browser = "chrome";
         Configuration.timeout = 15000;
-        Configuration.headless = false;
-        Configuration.browserSize = "1024x768";
+        Configuration.headless = true;
         initPages();
     }
 
-//    @AfterMethod
-//    public void endTest() {
-//        getWebDriver().quit();
-//    }
+    @AfterMethod
+    public void endTest() {
+        getWebDriver().quit();
+    }
 
 }

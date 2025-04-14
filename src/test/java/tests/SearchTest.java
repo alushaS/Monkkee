@@ -1,9 +1,8 @@
 package tests;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SearchTest extends BaseTest {
+public class SearchTest extends BaseTest implements ITestConstants {
 
     @Test(description = "Search existing entry test")
     public void searchExistingEntryTest() {
@@ -11,8 +10,7 @@ public class SearchTest extends BaseTest {
                 .loginUser(LOGIN_URL, USER, PASSWORD);
         entrySteps
                 .createNewEntry(ENTRY_TEXT)
-                .searchEntry(ENTRY_TEXT);
-        Assert.assertEquals(entriesPage.getExistEntryText(ENTRY_TEXT), ENTRY_TEXT);
+                .searchExistingEntry(ENTRY_TEXT);
     }
 
     @Test(description = "Search non-existing entry test")
@@ -21,7 +19,6 @@ public class SearchTest extends BaseTest {
                 .loginUser(LOGIN_URL, USER, PASSWORD);
         entrySteps
                 .createNewEntry(ENTRY_TEXT)
-                .searchEntry(NON_EXISTING_ENTRY_TEXT);
-        Assert.assertEquals(entriesPage.getNoEntriesFoundText(), "No entries found");
+                .searchNonExistingEntry(NON_EXISTING_ENTRY_TEXT);
     }
 }

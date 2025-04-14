@@ -1,6 +1,7 @@
 package steps;
 
 import io.qameta.allure.Step;
+import org.testng.Assert;
 import pages.PasswordReminderPage;
 
 public class PasswordReminderSteps extends BaseSteps{
@@ -16,5 +17,6 @@ public class PasswordReminderSteps extends BaseSteps{
         passwordReminderPage
                 .openPasswordReminderPage(url)
                 .fillReminderForm(email);
+        Assert.assertEquals(passwordReminderPage.getHintSentMessage(), "Password hint sent");
     }
 }

@@ -8,6 +8,11 @@ public class Dropdown {
 
     public static final SelenideElement LANGUAGE_DROPDOWN = $x("//*[@name='selectLocale']");
 
+    /**
+     * Language select option.
+     *
+     * @param option the option
+     */
     public void languageSelectOption(String option) {
         LANGUAGE_DROPDOWN.selectOptionByValue(option);
     }
