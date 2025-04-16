@@ -84,7 +84,7 @@ public class LoginPage extends BasePage {
     public EntriesPage loginUser(String email, String password) {
         fillLoginForm(email, password);
         new Button().click(SUBMIT_REG);
-        log.info("User with email: {} and password: {} is logged in.", email, password);
+        log.info("User with email: {} is logged in.", email);
         return new EntriesPage();
     }
 
