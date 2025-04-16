@@ -3,7 +3,7 @@ Checklist for monkkee.com:
 --Registration (button "Sing up - it's free")--
 1. Successful registration (email is valid, password has enough characters)
 2. Submit registration with all empty fields
-3. Submit registration with empty password
+3. Submit registration with empty password confirmation field
 
 --Login--
 4. Successful login
@@ -19,8 +19,10 @@ Checklist for monkkee.com:
 
 --Search--
 12. Existing entry is found
-13. Empty query submit displays all entries
-14. Non-existing query submit displays no entries
+13. Non-existing query submit displays no entries
+
+--Settings--
+14. Language is changed from English to French.
 
 --Calendar--
 15. After choosing a date, all entries created on that date are displayed
