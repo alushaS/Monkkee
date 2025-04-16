@@ -7,18 +7,18 @@ public class SearchTest extends BaseTest implements ITestConstants {
     @Test(description = "Search existing entry test")
     public void searchExistingEntryTest() {
         loginSteps
-                .loginUser(LOGIN_URL, USER, PASSWORD);
+                .loginUserAndCheckLogged(LOGIN_URL, USER, PASSWORD);
         entrySteps
-                .createNewEntry(ENTRY_TEXT)
-                .searchExistingEntry(ENTRY_TEXT);
+                .createNewEntryAndCheckCreated(ENTRY_TEXT)
+                .searchEntryAndCheckExists(ENTRY_TEXT);
     }
 
     @Test(description = "Search non-existing entry test")
     public void searchNonExistingEntryTest() {
         loginSteps
-                .loginUser(LOGIN_URL, USER, PASSWORD);
+                .loginUserAndCheckLogged(LOGIN_URL, USER, PASSWORD);
         entrySteps
-                .createNewEntry(ENTRY_TEXT)
-                .searchNonExistingEntry(NON_EXISTING_ENTRY_TEXT);
+                .createNewEntryAndCheckCreated(ENTRY_TEXT)
+                .searchExistingEntryAndCheckNotExists(NON_EXISTING_ENTRY_TEXT);
     }
 }

@@ -68,11 +68,13 @@ public class EntriesPage extends BasePage{
      * @return the exist entry text
      */
     public String getExistEntryText(String entryText) {
-        try { log.info("Getting existing entry text.");
+        try {
+            log.info("Getting existing entry text.");
             return $x(String.format(ENTRY_TEXT_XPATH, entryText)).getText();
         }
         catch (Exception e) {
-            log.error("Failed to get existing entry text.", e); return ""; }
+            log.error("Failed to get existing entry text.", e); return "";
+        }
     }
 
     /**
@@ -81,7 +83,7 @@ public class EntriesPage extends BasePage{
      * @param entryText the entry text
      * @return the boolean
      */
-    public boolean isEntryDeleted(String entryText) {
+    public boolean isEntryVisible (String entryText) {
        log.info("Entry: {} is deleted.", entryText);
        return $x(String.format(ENTRY_TEXT_XPATH, entryText)).is(Condition.visible);
     }
@@ -92,8 +94,13 @@ public class EntriesPage extends BasePage{
      * @return the no entries found text
      */
     public String getNoEntriesFoundText() {
-        NO_ENTRIES_FOUND.shouldBe(Condition.visible);
-        log.info("Message: {} is displayed.", NO_ENTRIES_FOUND);
+        try {
+            log.info("Getting existing entries.");
+            NO_ENTRIES_FOUND.shouldBe(Condition.visible);
+        }
+        catch (Exception e) {
+            log.error("Failed to get \"No entries found text\" text.", e);
+        }
         return NO_ENTRIES_FOUND.getText();
     }
 

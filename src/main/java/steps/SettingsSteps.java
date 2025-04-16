@@ -16,7 +16,7 @@ public class SettingsSteps extends BaseSteps {
     }
 
     @Step("Change language from English to French step")
-    public void changeLanguageToFrench(String url, String option) {
+    public void changeLanguageToFrenchAndCheckLanguageChanged(String url, String option) {
         settingsPage
                 .openSettingsPage(url)
                 .isOpened()
@@ -25,7 +25,7 @@ public class SettingsSteps extends BaseSteps {
     }
 
     @Step("Change language to English back")
-    public void changeLanguageToEnglishBack(String url, String option) {
+    public void changeLanguageToEnglishBackAndCheckLanguageChanged(String url, String option) {
         settingsPage
                 .openSettingsPage(url)
                 .isOpened()

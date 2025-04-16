@@ -3,10 +3,9 @@ package elements;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static pages.SettingsPage.LANGUAGE_DROPDOWN;
 
 public class Dropdown {
-
-    public static final SelenideElement LANGUAGE_DROPDOWN = $x("//*[@name='selectLocale']");
 
     /**
      * Language select option.

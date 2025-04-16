@@ -18,7 +18,7 @@ public class RegistrationSteps extends BaseSteps implements IConstants {
     }
 
     @Step("Register user: {email}")
-    public void registerUserWIthAllFields(String url, User user) {
+    public void registerUserWIthAllFieldsAndCheckUserRegistered(String url, User user) {
         registrationPage
                 .openRegistrationPage(url)
                 .isOpened()
@@ -27,7 +27,7 @@ public class RegistrationSteps extends BaseSteps implements IConstants {
     }
 
     @Step("Register user with empty password confirmation field")
-    public void registerUserWithEmptyPasswordConfirmationField(String url, User user) {
+    public void registerUserWithEmptyPasswordConfirmationFieldAndCheckUserNotRegistered(String url, User user) {
         registrationPage
                 .openRegistrationPage(url)
                 .isOpened()
@@ -36,7 +36,7 @@ public class RegistrationSteps extends BaseSteps implements IConstants {
     }
 
     @Step("Register user with all empty fields")
-    public void registerUserWithAllEmptyFields(String url, User user) {
+    public void registerUserWithAllEmptyFieldsAndCheckUserNotRegistered(String url, User user) {
         registrationPage
                 .openRegistrationPage(url)
                 .isOpened()
