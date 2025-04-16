@@ -1,12 +1,12 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import elements.Dropdown;
 import lombok.extern.log4j.Log4j2;
 
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
-import static elements.Dropdown.LANGUAGE_DROPDOWN;
 import static pages.EntriesPage.SUBMIT;
 
 @Log4j2
@@ -15,6 +15,7 @@ public class SettingsPage extends BasePage {
     public static final String LANGUAGE_CHANGED_TEXT = "//*[contains(text(), '%s')]";
     public static final String LANGUAGE_CHANGED_TO_FRENCH = "Modifications enregistrées";
     public static final String LANGUAGE_CHANGED_TO_ENGLISH = "Your language has been changed successfully";
+    public static final SelenideElement LANGUAGE_DROPDOWN = $x("//*[@name='selectLocale']");
 
     /**
      * Open settings page.

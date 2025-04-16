@@ -56,7 +56,7 @@ public class LoginPage extends BasePage {
         isOpened();
         new Input("login").write(email);
         new Input("password").write(password);
-        log.info("Login page is submitted with email: {} and password: {}.", email, password);
+        log.info("Login page is submitted with email: {}.", email);
         return this;
     }
 
@@ -70,7 +70,7 @@ public class LoginPage extends BasePage {
         isOpened();
         new Input("login").write(user.getEmail());
         new Input("password").write(user.getPassword());
-        log.info("Login page is submitted with email: {} and password: {}.", user.getEmail(), user.getPassword());
+        log.info("Login page is submitted with email: {}.", user.getEmail());
         return this;
     }
 
@@ -97,7 +97,7 @@ public class LoginPage extends BasePage {
     public EntriesPage loginUser(User user) {
         fillLoginForm(user);
         new Button().click(SUBMIT_REG);
-        log.info("User with email: {} and password: {} is logged in.", user.getEmail(), user.getPassword());
+        log.info("User with email: {} is logged in.", user.getEmail());
         return new EntriesPage();
     }
 
@@ -107,7 +107,8 @@ public class LoginPage extends BasePage {
      * @return the failed login text
      */
     public String getFailedLoginText() {
-        try { log.info("Getting validation message for email field.");
+        try {
+            log.info("Getting validation message for email field.");
             return LOGIN_MANDATORY.getText();
         }
         catch (Exception e) {
@@ -121,7 +122,8 @@ public class LoginPage extends BasePage {
      * @return the failed password text
      */
     public String getFailedPasswordText() {
-        try { log.info("Getting validation message for password field.");
+        try {
+            log.info("Getting validation message for password field.");
             return PASSWORD_MANDATORY.getText();
         }
         catch (Exception e) {

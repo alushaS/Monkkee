@@ -8,17 +8,17 @@ public class SettingsTest extends BaseTest implements ITestConstants {
     @Test (description = "Change language from English to French test")
     public void changeLanguageTest() {
         loginSteps
-                .loginUser(LOGIN_URL, USER, PASSWORD);
+                .loginUserAndCheckLogged(LOGIN_URL, USER, PASSWORD);
         settingsSteps
-                .changeLanguageToFrench(LANGUAGE_SETTINGS, "fr");
+                .changeLanguageToFrenchAndCheckLanguageChanged(LANGUAGE_SETTINGS, "fr");
     }
 
     @AfterMethod(description = "Change language to English back")
     public void changeLanguage() {
         loginSteps.logoutUser();
         loginSteps
-                .loginUser(LOGIN_URL, USER, PASSWORD);
+                .loginUserAndCheckLogged(LOGIN_URL, USER, PASSWORD);
         settingsSteps
-                .changeLanguageToEnglishBack(LANGUAGE_SETTINGS, "en");
+                .changeLanguageToEnglishBackAndCheckLanguageChanged(LANGUAGE_SETTINGS, "en");
     }
 }

@@ -22,7 +22,7 @@ public class LoginSteps extends BaseSteps{
     }
 
     @Step("Login user: {email}")
-    public void loginUser(String url, String email, String password) {
+    public void loginUserAndCheckLogged(String url, String email, String password) {
         loginPage
                 .openLoginPage(url)
                 .isOpened()
@@ -37,15 +37,7 @@ public class LoginSteps extends BaseSteps{
     }
 
     @Step("Login user: {email}")
-    public void loginUser(String url, User user) {
-        loginPage
-                .openLoginPage(url)
-                .isOpened()
-                .loginUser(user.getEmail(), user.getPassword());
-    }
-
-    @Step("Login user: {email}")
-    public void loginUserWithEmptyLoginAndPassword(String url, User user) {
+    public void loginUserWithEmptyLoginAndPasswordAndCheckValidations(String url, User user) {
         loginPage
                 .openLoginPage(url)
                 .isOpened()
@@ -55,7 +47,7 @@ public class LoginSteps extends BaseSteps{
     }
 
     @Step("Login user: {email} with empty password")
-    public void loginUserWithEmptyPassword(String url, User user) {
+    public void loginUserWithEmptyPasswordAndCheckValidation(String url, User user) {
         loginPage
                 .openLoginPage(url)
                 .isOpened()
@@ -64,7 +56,7 @@ public class LoginSteps extends BaseSteps{
     }
 
     @Step("Login user: {email} with empty email")
-    public void loginUserWithEmptyEmail(String url, User user) {
+    public void loginUserWithEmptyEmailAndCheckValidation(String url, User user) {
         loginPage
                 .openLoginPage(url)
                 .isOpened()

@@ -19,9 +19,11 @@ public class AccountPage extends BasePage{
      */
     public String getSuccessfulRegistrationText() {
         try { log.info("Getting successful registration text.");
-            return USER_REGISTERED.getText(); }
+            return USER_REGISTERED.getText();
+        }
         catch (Exception e) {
-            log.error("Failed to get successful registration text.", e); return ""; }
+            log.error("Failed to get successful registration text.", e); return "";
+        }
     }
 
     /**
@@ -31,8 +33,10 @@ public class AccountPage extends BasePage{
      */
     public String getFailedRegistrationText() {
         try { log.info("Getting failed registration text.");
-            return USER_NOT_REGISTERED.getText(); }
-        catch (Exception e)
-        { log.error("Failed to get failed registration text.", e); return ""; }
+            return USER_NOT_REGISTERED.getText();
+        }
+        catch (Exception e) {
+            log.error("Failed to get failed registration text.", e); return "";
+        }
     }
 }

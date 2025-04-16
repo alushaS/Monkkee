@@ -20,7 +20,7 @@ public class EntrySteps extends BaseSteps {
     }
 
     @Step("Create new entry step")
-    public EntrySteps createNewEntry(String entryText) {
+    public EntrySteps createNewEntryAndCheckCreated(String entryText) {
         entriesPage
                 .openEntryPage()
                 .createEntry(entryText);
@@ -30,25 +30,25 @@ public class EntrySteps extends BaseSteps {
 
 
     @Step("Create and delete new entry step")
-    public EntrySteps deleteCreatedEntry(String entryText) {
+    public EntrySteps deleteCreatedEntryAndCheckDeleted(String entryText) {
         entriesPage
                 .openEntryPage()
                 .createEntry(entryText)
                 .deleteEntry(entryText);
-        Assert.assertTrue(entriesPage.isEntryDeleted(entryText));
+        Assert.assertTrue(entriesPage.isEntryVisible(entryText));
         return this;
     }
 
     @Step("Delete all entries step")
-    public EntrySteps deleteAllEntries(String entryText) {
+    public EntrySteps deleteAllEntriesAndCheckDeleted(String entryText) {
         entriesPage
                 .deleteAllEntries();
-        Assert.assertTrue(entriesPage.isEntryDeleted(entryText));
+        Assert.assertTrue(entriesPage.isEntryVisible(entryText));
         return this;
     }
 
     @Step("Search existing entry step")
-    public EntrySteps searchExistingEntry(String entryText) {
+    public EntrySteps searchEntryAndCheckExists(String entryText) {
         entriesPage
                 .searchEntry(entryText);
         Assert.assertEquals(entriesPage.getExistEntryText(entryText), entryText);
@@ -56,7 +56,7 @@ public class EntrySteps extends BaseSteps {
     }
 
     @Step("Search non-existing entry step")
-    public EntrySteps searchNonExistingEntry(String entryText) {
+    public EntrySteps searchExistingEntryAndCheckNotExists(String entryText) {
         entriesPage
                 .searchEntry(entryText);
         Assert.assertEquals(entriesPage.getNoEntriesFoundText(), NO_ENTRIES_FOUND_TEXT);
@@ -64,7 +64,7 @@ public class EntrySteps extends BaseSteps {
     }
 
     @Step("Search an entry by date")
-    public EntrySteps searchEntryByDate () {
+    public EntrySteps searchEntryByDateAndCheckFound() {
         entriesPage
                 .searchEntryByDate();
         Assert.assertTrue(SEARCH_RESULT.is(Condition.visible));

@@ -13,7 +13,7 @@ public class PasswordReminderSteps extends BaseSteps{
     }
 
     @Step("Send password reminder step for user: {email}")
-    public void sendPasswordReminder(String url, String email) {
+    public void sendPasswordReminderAndCheckHintSent(String url, String email) {
         passwordReminderPage
                 .openPasswordReminderPage(url)
                 .fillReminderForm(email);

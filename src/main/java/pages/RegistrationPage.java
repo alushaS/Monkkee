@@ -53,8 +53,7 @@ public class RegistrationPage extends BasePage {
         new Input("password").writeToRegistration(user.getPassword());
         new Input("password_confirmation").writeToRegistration(user.getPasswordConfirmation());
         new Input("password_hint").writeToRegistration(user.getHint());
-        log.info("Registration form is submitted with data: email: {}, password: {}, pass. confirmation: {}, hint: {}.",
-                user.getEmail(), user.getPassword(), user.getPasswordConfirmation(), user.getHint());
+        log.info("Registration form is submitted with email: {}.", user.getEmail());
         return this;
     }
 
