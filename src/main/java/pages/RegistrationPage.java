@@ -27,6 +27,7 @@ public class RegistrationPage extends BasePage {
      */
     public RegistrationPage openRegistrationPage(String url) {
         open(url);
+        log.info("Registration page is opened.");
         return this;
     }
 
@@ -37,7 +38,6 @@ public class RegistrationPage extends BasePage {
      */
     public RegistrationPage isOpened() {
         SUBMIT_REG.shouldBe(Condition.visible);
-        log.info("Registration page is opened.");
         return this;
     }
 
